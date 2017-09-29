@@ -1,9 +1,9 @@
 "use strict";
 
 Lyngk.Coordinates = function (c, l) {
-    this.is_valid = function () {
-        var coord = c + l;
+    var coord = c + l;
 
+    this.is_valid = function () {
         var tabPossibles = [
             'C1',
             'B2', 'C2', 'D2', 'E2',
@@ -21,5 +21,9 @@ Lyngk.Coordinates = function (c, l) {
         }else{
             return true;
         }
+    }
+
+    this.to_string = function () {
+        return c + l;
     }
 };
