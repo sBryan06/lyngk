@@ -22,4 +22,9 @@ LyngkTestCase.prototype.testStory2 = function () {
     }
     console.log(count);
     assertEquals(count, 43);
-}
+};
+
+LyngkTestCase.prototype.testStory2 = function () {
+    var coordinates3 = new Lyngk.Coordinates('A', 1);
+    assertFalse(coordinates3.is_string());
+};
