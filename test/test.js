@@ -63,7 +63,7 @@ LyngkTestCase.prototype.testStory8 = function () {
     assertEquals(intersectionTest.getColor(), Lyngk.Color.BLUE);
 }
 
-LyngkTestCase.prototype.testStory8 = function () {
+LyngkTestCase.prototype.testStory9 = function () {
     var pieceBleu = new Lyngk.Piece(Lyngk.Color.BLUE);
     var pieceRouge = new Lyngk.Piece(Lyngk.Color.RED);
 
