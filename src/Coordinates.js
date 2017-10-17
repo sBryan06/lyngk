@@ -1,8 +1,6 @@
 "use strict";
 
 Lyngk.Coordinates = function (c, l) {
-    var col = c;
-    var lig = l;
     var coord = c + l;
 
     this.is_valid = function () {
@@ -31,5 +29,9 @@ Lyngk.Coordinates = function (c, l) {
         } else {
             return 'invalid';
         }
+    }
+
+    this.clone = function () {
+        return new Lyngk.Coordinates(c, l);
     }
 };
