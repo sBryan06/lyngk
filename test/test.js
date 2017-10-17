@@ -47,8 +47,18 @@ LyngkTestCase.prototype.testStory6 = function () {
 };
 
 LyngkTestCase.prototype.testStory7 = function () {
-    var coordIntersection = new Lyngk.Coordinates('B', 3);
-    var intersectionTest = new Lyngk.Intersection(coordIntersection);
+    var intersectionTest = new Lyngk.Intersection();
 
     assertEquals(intersectionTest.getState(), Lyngk.State.VACANT);
+}
+
+LyngkTestCase.prototype.testStory8 = function () {
+    var pieceBleu = new Lyngk.Piece(Lyngk.Color.BLUE);
+
+    var intersectionTest = new Lyngk.Intersection();
+
+    intersectionTest.add(pieceBleu);
+
+    assertEquals(intersectionTest.getState(), Lyngk.State.ONE_PIECE);
+    assertEquals(intersectionTest.getColor(), Lyngk.Color.BLUE);
 }
