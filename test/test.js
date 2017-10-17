@@ -20,7 +20,6 @@ LyngkTestCase.prototype.testStory2 = function () {
             }
         }
     }
-    console.log(count);
     assertEquals(count, 43);
 };
 
