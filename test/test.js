@@ -91,5 +91,18 @@ LyngkTestCase.prototype.testStory10 = function () {
     intersectionTest.addPiece(pieceVerte);
 
     assertEquals(intersectionTest.getState(), Lyngk.State.FULL_STACK);
-    assertEquals(intersectionTest.getColor(), Lyngk.Color.GREEN);
+}
+
+LyngkTestCase.prototype.testStory10 = function () {
+    var engine = new Lyngk.Engine();
+
+    engine.init();
+
+    assertEquals(engine.getNbIntersection(), 43);
+
+    assertTrue(engine.haveOnePieceByIntersection());
+    var tab = engine.getIntersections();
+    for(int i=0; i<tab.length; i++){
+        assertEquals(tab[i].getState(), Lyngk.State.ONE_PIECE)
+    }
 }
