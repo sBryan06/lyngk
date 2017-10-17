@@ -33,3 +33,9 @@ LyngkTestCase.prototype.testStory4 = function () {
     var coordinates3 = new Lyngk.Coordinates('A', 1);
     assertEquals(coordinates3.to_string(), 'invalid');
 };
+
+LyngkTestCase.prototype.testStory5 = function () {
+    var coordinates3 = new Lyngk.Coordinates('A', 3);
+    var coordinatesCopy = coordinates3.clone();
+    assertEquals(coordinates3.to_string(), coordinatesCopy.to_string());
+};
