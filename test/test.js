@@ -24,7 +24,12 @@ LyngkTestCase.prototype.testStory2 = function () {
     assertEquals(count, 43);
 };
 
-LyngkTestCase.prototype.testStory2 = function () {
+LyngkTestCase.prototype.testStory3 = function () {
+    var coordinates3 = new Lyngk.Coordinates('A', 3);
+    assertEquals(coordinates3.to_string(), 'A3');
+};
+
+LyngkTestCase.prototype.testStory4 = function () {
     var coordinates3 = new Lyngk.Coordinates('A', 1);
-    assertEquals(coordinates3.to_string(), 'A1');
+    assertEquals(coordinates3.to_string(), 'invalid');
 };

@@ -24,6 +24,11 @@ Lyngk.Coordinates = function (c, l) {
     }
 
     this.to_string = function () {
-        return c + l;
+        if (this.is_valid()) {
+            return c + l;
+        } else {
+            return 'invalid';
+        }
+
     }
 };
