@@ -47,7 +47,7 @@ LyngkTestCase.prototype.testStory6 = function () {
 };
 
 LyngkTestCase.prototype.testStory7 = function () {
-    var intersectionTest = new Lyngk.Intersection();
+    var intersectionTest = new Lyngk.Intersection(new Lyngk.Coordinates('A', 3));
 
     assertEquals(intersectionTest.getState(), Lyngk.State.VACANT);
 }
@@ -55,7 +55,7 @@ LyngkTestCase.prototype.testStory7 = function () {
 LyngkTestCase.prototype.testStory8 = function () {
     var pieceBleu = new Lyngk.Piece(Lyngk.Color.BLUE);
 
-    var intersectionTest = new Lyngk.Intersection();
+    var intersectionTest = new Lyngk.Intersection(new Lyngk.Coordinates('A', 3));
 
     intersectionTest.addPiece(pieceBleu);
 
@@ -67,7 +67,7 @@ LyngkTestCase.prototype.testStory9 = function () {
     var pieceBleu = new Lyngk.Piece(Lyngk.Color.BLUE);
     var pieceRouge = new Lyngk.Piece(Lyngk.Color.RED);
 
-    var intersectionTest = new Lyngk.Intersection();
+    var intersectionTest = new Lyngk.Intersection(new Lyngk.Coordinates('A', 3));
     intersectionTest.addPiece(pieceBleu);
     intersectionTest.addPiece(pieceRouge);
 
@@ -83,7 +83,7 @@ LyngkTestCase.prototype.testStory10 = function () {
     var pieceVerte = new Lyngk.Piece(Lyngk.Color.GREEN);
 
 
-    var intersectionTest = new Lyngk.Intersection();
+    var intersectionTest = new Lyngk.Intersection(new Lyngk.Coordinates('A', 3));
     intersectionTest.addPiece(pieceBleu);
     intersectionTest.addPiece(pieceRouge);
     intersectionTest.addPiece(pieceIvoire);
@@ -93,16 +93,15 @@ LyngkTestCase.prototype.testStory10 = function () {
     assertEquals(intersectionTest.getState(), Lyngk.State.FULL_STACK);
 }
 
-LyngkTestCase.prototype.testStory10 = function () {
+LyngkTestCase.prototype.testStory11 = function () {
     var engine = new Lyngk.Engine();
 
     engine.init();
 
-    assertEquals(engine.getNbIntersection(), 43);
+    assertEquals(engine.getPlateau().length, 43);
 
-    assertTrue(engine.haveOnePieceByIntersection());
-    var tab = engine.getIntersections();
-    for(int i=0; i<tab.length; i++){
-        assertEquals(tab[i].getState(), Lyngk.State.ONE_PIECE)
+    var tab = engine.getPlateau();
+    for(var i=0; i<tab.length; i++){
+        assertEquals(tab[i].getState(), Lyngk.State.ONE_PIECE);
     }
 }

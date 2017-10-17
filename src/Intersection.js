@@ -2,10 +2,11 @@
 
 Lyngk.State = {VACANT: 0, ONE_PIECE: 1, STACK: 2, FULL_STACK: 3};
 
-Lyngk.Intersection = function (c) {
+Lyngk.Intersection = function (coord) {
     var state = Lyngk.State.VACANT;
     var colorInter = '';
     var pieces= [];
+    var coordinates = new Lyngk.Coordinates(coord.getColonne(), coord.getLigne());
 
     this.getState = function () {
         return state;
