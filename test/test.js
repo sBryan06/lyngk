@@ -46,3 +46,10 @@ LyngkTestCase.prototype.testStory6 = function () {
 
     assertTrue(coordinatesA3.hash() < coordinatesB3.hash());
 };
+
+LyngkTestCase.prototype.testStory7 = function () {
+    var coordIntersection = new Lyngk.Coordinates('B', 3);
+    var intersectionTest = new Lyngk.Intersection(coordIntersection);
+
+    assertEquals(intersectionTest.getState(), Lyngk.State.VACANT);
+}
