@@ -44,5 +44,5 @@ LyngkTestCase.prototype.testStory6 = function () {
     var coordinatesA3 = new Lyngk.Coordinates('A', 3);
     var coordinatesB3 = new Lyngk.Coordinates('B', 3);
 
-    assertTrue(coordinatesA3.to_string() < coordinatesB3.to_string());
+    assertTrue(coordinatesA3.hash() < coordinatesB3.hash());
 };
