@@ -105,3 +105,40 @@ LyngkTestCase.prototype.testStory11 = function () {
         assertEquals(tab[i].getState(), Lyngk.State.ONE_PIECE);
     }
 }
+
+LyngkTestCase.prototype.testStory12 = function () {
+    var engine = new Lyngk.Engine();
+
+    engine.init();
+
+    var countBlue = 0;
+    var countRed = 0;
+    var countBlack = 0;
+    var countIvory = 0;
+    var countGreen = 0;
+    var countWhite = 0;
+
+
+    var tab = engine.getPlateau();
+    for(var i=0; i<tab.length; i++){
+        if(tab[i].getColor() === Lyngk.Color.BLUE){
+            countBlue++;
+        }else if(tab[i].getColor() === Lyngk.Color.RED){
+            countRed++;
+        }else if(tab[i].getColor() === Lyngk.Color.BLACK){
+            countBlack++;
+        }else if(tab[i].getColor() === Lyngk.Color.IVORY){
+            countIvory++;
+        }else if(tab[i].getColor() === Lyngk.Color.GREEN){
+            countGreen++;
+        }else if(tab[i].getColor() === Lyngk.Color.WHITE){
+            countWhite++;
+        }
+    }
+    assertEquals(countBlue, 8);
+    assertEquals(countBlack, 8);
+    assertEquals(countRed, 8);
+    assertEquals(countIvory, 8);
+    assertEquals(countRed, 8);
+    assertEquals(countWhite, 3);
+}
