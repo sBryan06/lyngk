@@ -150,6 +150,6 @@ LyngkTestCase.prototype.testStory13 = function () {
 
     var tab = engine.getPlateau();
     for(var i=0; i<tab.length; i++){
-        assertEquals(tab[i].getHauteur() === 1);
+        assertEquals(tab[i].getHauteur(), 1);
     }
 }

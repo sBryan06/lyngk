@@ -16,6 +16,10 @@ Lyngk.Intersection = function (coord) {
         return colorInter;
     }
 
+    this.getHauteur = function () {
+        return pieces.length;
+    }
+
     this.addPiece = function (piece) {
         if(state === Lyngk.State.VACANT){
             colorInter = piece.getColor();
