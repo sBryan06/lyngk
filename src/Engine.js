@@ -10,6 +10,14 @@ Lyngk.Engine = function () {
         return plateau;
     }
 
+    // On renvoie un nombre aléatoire entre une valeur min (incluse)
+    // et une valeur max (exclue)
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
     this.init = function () {
         var colones = ['A','B','C','D','E','F','G','H','I'];
         var lignes = [1,2,3,4,5,6,7,8,9];
@@ -29,11 +37,12 @@ Lyngk.Engine = function () {
             tabPieces.push(pieceIvory);
             tabPieces.push(pieceGreen);
         }
-        for(var b=0; b<8; b++){
+        for(var b=0; b<3; b++){
             tabPieces.push(pieceWhite);
         }
-        // piece qui va etre ajouté au intersection
-        var a = 0;
+
+        var indiceAlea = 0;
+        var pieceTemp;
 
         for(var i in colones) {
             for(var j in lignes) {
@@ -41,10 +50,12 @@ Lyngk.Engine = function () {
                 if(coordinates.is_valid() == true){
                     // creation de l'intersection
                     var intersection = new Lyngk.Intersection(coordinates);
+                    indiceAlea = getRandomInt(0,tabPieces.length);
+                    pieceTemp = tabPieces[indiceAlea];
+                    tabPieces.splice(indiceAlea, 1);
                     // ajout de la piece a l'intersection
-                    intersection.addPiece(tabPieces[a]);
+                    intersection.addPiece(pieceTemp);
                     plateau.push(intersection);
-                    a++;
                 }
             }
         }

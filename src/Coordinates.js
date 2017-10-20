@@ -3,13 +3,13 @@
 Lyngk.Coordinates = function (c, l) {
     var coord = c + l;
 
-    this.getColonne = function () {
+    /*this.getColonne = function () {
         return c;
-    }
+    };
 
     this.getLigne = function () {
         return l;
-    }
+    };*/
 
     this.is_valid = function () {
         var tabPossibles = [
@@ -23,12 +23,12 @@ Lyngk.Coordinates = function (c, l) {
             'E8', 'F8', 'G8', 'H8',
             'G9'
         ];
-        if(tabPossibles.indexOf(coord) == -1) {
+        if(tabPossibles.indexOf(coord) === -1) {
             return false;
         }else{
             return true;
         }
-    }
+    };
 
     this.to_string = function () {
         if (this.is_valid()) {
@@ -36,11 +36,11 @@ Lyngk.Coordinates = function (c, l) {
         } else {
             return 'invalid';
         }
-    }
+    };
 
     this.clone = function () {
         return new Lyngk.Coordinates(c, l);
-    }
+    };
 
     this.hash = function () {
         var res = c.charCodeAt(0).toString() + l;
