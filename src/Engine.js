@@ -8,7 +8,7 @@ Lyngk.Engine = function () {
 
     this.getPlateau = function () {
         return plateau;
-    }
+    };
 
     // On renvoie un nombre aléatoire entre une valeur min (incluse)
     // et une valeur max (exclue)

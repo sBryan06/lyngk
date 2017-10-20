@@ -50,7 +50,7 @@ LyngkTestCase.prototype.testStory7 = function () {
     var intersectionTest = new Lyngk.Intersection(new Lyngk.Coordinates('A', 3));
 
     assertEquals(intersectionTest.getState(), Lyngk.State.VACANT);
-}
+};
 
 LyngkTestCase.prototype.testStory8 = function () {
     var pieceBleu = new Lyngk.Piece(Lyngk.Color.BLUE);
@@ -61,7 +61,7 @@ LyngkTestCase.prototype.testStory8 = function () {
 
     assertEquals(intersectionTest.getState(), Lyngk.State.ONE_PIECE);
     assertEquals(intersectionTest.getColor(), Lyngk.Color.BLUE);
-}
+};
 
 LyngkTestCase.prototype.testStory9 = function () {
     var pieceBleu = new Lyngk.Piece(Lyngk.Color.BLUE);
@@ -73,7 +73,7 @@ LyngkTestCase.prototype.testStory9 = function () {
 
     assertEquals(intersectionTest.getState(), Lyngk.State.STACK);
     assertEquals(intersectionTest.getColor(), Lyngk.Color.RED);
-}
+};
 
 LyngkTestCase.prototype.testStory10 = function () {
     var pieceBleu = new Lyngk.Piece(Lyngk.Color.BLUE);
@@ -91,7 +91,7 @@ LyngkTestCase.prototype.testStory10 = function () {
     intersectionTest.addPiece(pieceVerte);
 
     assertEquals(intersectionTest.getState(), Lyngk.State.FULL_STACK);
-}
+};
 
 LyngkTestCase.prototype.testStory11 = function () {
     var engine = new Lyngk.Engine();
@@ -104,7 +104,7 @@ LyngkTestCase.prototype.testStory11 = function () {
     for(var i=0; i<tab.length; i++){
         assertEquals(tab[i].getState(), Lyngk.State.ONE_PIECE);
     }
-}
+};
 
 LyngkTestCase.prototype.testStory12 = function () {
     var engine = new Lyngk.Engine();
@@ -141,7 +141,7 @@ LyngkTestCase.prototype.testStory12 = function () {
     assertEquals(countIvory, 8);
     assertEquals(countRed, 8);
     assertEquals(countWhite, 3);
-}
+};
 
 LyngkTestCase.prototype.testStory13 = function () {
     var engine = new Lyngk.Engine();
@@ -152,4 +152,32 @@ LyngkTestCase.prototype.testStory13 = function () {
     for(var i=0; i<tab.length; i++){
         assertEquals(tab[i].getHauteur(), 1);
     }
-}
+};
+
+LyngkTestCase.prototype.testStory14 = function () {
+    var engine = new Lyngk.Engine();
+
+    engine.init();
+
+    var tab = engine.getPlateau();
+    tab[0].addPiece(new Lyngk.Piece(Lyngk.Color.BLACK));
+    tab[0].addPiece(new Lyngk.Piece(Lyngk.Color.RED));
+    tab[0].addPiece(new Lyngk.Piece(Lyngk.Color.BLUE));
+
+    assertEquals(tab[0].getHauteur(), 4);
+    assertEquals(tab[0].getState(), Lyngk.State.STACK);
+    assertEquals(tab[0].getColor(), Lyngk.Color.BLUE);
+};
+
+LyngkTestCase.prototype.testStory15 = function () {
+    var engine = new Lyngk.Engine();
+    engine.init();
+    var tab = engine.getPlateau();
+
+    var colorBeforeA3 = engine.getIntersection('A3').getColor();
+
+    engine.movePiece('A3', 'B3');
+
+    assertEquals(engine.getIntersection('A3').getState(), Lyngk.State.VACANT);
+    assertEquals(engine.getIntersection('B3').getColor(), colorBeforeA3);
+};
