@@ -142,3 +142,14 @@ LyngkTestCase.prototype.testStory12 = function () {
     assertEquals(countRed, 8);
     assertEquals(countWhite, 3);
 }
+
+LyngkTestCase.prototype.testStory13 = function () {
+    var engine = new Lyngk.Engine();
+
+    engine.init();
+
+    var tab = engine.getPlateau();
+    for(var i=0; i<tab.length; i++){
+        assertEquals(tab[i].getHauteur() === 1);
+    }
+}
