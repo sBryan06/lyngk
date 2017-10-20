@@ -10,6 +10,14 @@ Lyngk.Engine = function () {
         return plateau;
     };
 
+    this.getIndexIntersection = function (position) {
+        for(var p=0; p<plateau.length; p++){
+            if(plateau[p].getCoord().to_string() === position){
+                return p;
+            }
+        }
+    };
+
     // On renvoie un nombre aléatoire entre une valeur min (incluse)
     // et une valeur max (exclue)
     function getRandomInt(min, max) {
@@ -59,5 +67,9 @@ Lyngk.Engine = function () {
                 }
             }
         }
+    };
+
+    this.movePiece = function (coord1, coord2) {
+        plateau[]
     }
 };

@@ -3,13 +3,13 @@
 Lyngk.Coordinates = function (c, l) {
     var coord = c + l;
 
-    /*this.getColonne = function () {
+    this.getColonne = function () {
         return c;
     };
 
     this.getLigne = function () {
         return l;
-    };*/
+    };
 
     this.is_valid = function () {
         var tabPossibles = [

@@ -2,10 +2,10 @@
 
 Lyngk.State = {VACANT: 0, ONE_PIECE: 1, STACK: 2, FULL_STACK: 3};
 
-Lyngk.Intersection = function () { //(coord) {
+Lyngk.Intersection = function(coord) {
     var state = Lyngk.State.VACANT;
     var pieces= [];
-    // var coordinates = new Lyngk.Coordinates(coord.getColonne(), coord.getLigne());
+    var coordinates = new Lyngk.Coordinates(coord.getColonne(), coord.getLigne());
 
     this.getState = function () {
         return state;
@@ -19,6 +19,10 @@ Lyngk.Intersection = function () { //(coord) {
 
     this.getHauteur = function () {
         return pieces.length;
+    };
+
+    this.getCoord = function(){
+        return coordinates;
     };
 
     this.addPiece = function (piece) {
