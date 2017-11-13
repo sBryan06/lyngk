@@ -10,10 +10,10 @@ Lyngk.Engine = function () {
         return plateau;
     };
 
-    this.getIndexIntersection = function (position) {
+    this.getIntersection = function (position) {
         for(var p=0; p<plateau.length; p++){
             if(plateau[p].getCoord().to_string() === position){
-                return p;
+                return plateau[p];
             }
         }
     };
@@ -70,6 +70,11 @@ Lyngk.Engine = function () {
     };
 
     this.movePiece = function (coord1, coord2) {
-        plateau[]
+        if (this.getIntersection(coord1).getCoord().is_valid() && this.getIntersection(coord2).getCoord().is_valid()){
+            var colorPieceTemp = this.getIntersection(coord1).getColor();
+
+            this.getIntersection(coord2).addPiece(new Lyngk.Piece(colorPieceTemp));
+            this.getIntersection(coord1).removeLastPiece();
+        }
     }
 };

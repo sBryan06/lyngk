@@ -174,15 +174,12 @@ LyngkTestCase.prototype.testStory15 = function () {
     engine.init();
     var tab = engine.getPlateau();
 
-    var coordA3 = new Coordinates('A', 3);
-    var coordB3 = new Coordinates('B', 3);
-
-    var colorBeforeA3 = tab[engine.getIndexIntersection(coordA3)].getColor();
+    var colorBeforeA3 = engine.getIntersection('A3').getColor();
     console.log(colorBeforeA3);
 
-    engine.movePiece(coordA3, coordB3);
+    engine.movePiece('A3', 'B3');
 
-    assertEquals(engine.getIntersection(coordA3).getState(), Lyngk.State.VACANT);
-    assertEquals(engine.getIntersection(coordA3).getColor(), null);
-    assertEquals(engine.getIntersection(coordB3).getColor(), colorBeforeA3);
+    assertEquals(engine.getIntersection('A3').getState(), Lyngk.State.VACANT);
+    assertEquals(engine.getIntersection('A3').getColor(), null);
+    assertEquals(engine.getIntersection('B3').getColor(), colorBeforeA3);
 };

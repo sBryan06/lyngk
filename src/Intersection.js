@@ -37,4 +37,11 @@ Lyngk.Intersection = function(coord) {
             state = Lyngk.State.FULL_STACK;
         }
     }
+
+    this.removeLastPiece = function(){
+        pieces.pop();
+        if(pieces.length === 0){
+            state = Lyngk.State.VACANT;
+        }
+    }
 };
