@@ -175,7 +175,6 @@ LyngkTestCase.prototype.testStory15 = function () {
     var tab = engine.getPlateau();
 
     var colorBeforeA3 = engine.getIntersection('A3').getColor();
-    console.log(colorBeforeA3);
 
     engine.movePiece('A3', 'B3');
 
@@ -190,7 +189,7 @@ LyngkTestCase.prototype.testStory16 = function () {
     var tab = engine.getPlateau();
 
     var colorAvantMovement = engine.getIntersection('A3').getColor();
-    console.log(colorAvantMovement);
+    console.log('code avant move' + colorAvantMovement);
 
     engine.movePiece('A3', 'B3');
     engine.movePiece('B3', 'B2');
@@ -198,8 +197,8 @@ LyngkTestCase.prototype.testStory16 = function () {
     assertEquals(engine.getIntersection('A3').getState(), Lyngk.State.VACANT);
     assertEquals(engine.getIntersection('A3').getColor(), null);
     assertEquals(engine.getIntersection('B3').getState(), Lyngk.State.VACANT);
-    assertEquals(engine.getIntersection('A3').getColor(), null);
-    assertEquals(engine.getIntersection('A3').getColor(), colorAvantMovement);
-    assertEquals(engine.getIntersection('A3').getHauteur(), 3);
+    assertEquals(engine.getIntersection('B3').getColor(), null);
+    assertEquals(engine.getIntersection('B2').getColor(), colorAvantMovement);
+    assertEquals(engine.getIntersection('B2').getHauteur(), 3);
 
 };

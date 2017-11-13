@@ -71,10 +71,25 @@ Lyngk.Engine = function () {
 
     this.movePiece = function (coord1, coord2) {
         if (this.getIntersection(coord1).getCoord().is_valid() && this.getIntersection(coord2).getCoord().is_valid()){
-            var colorPieceTemp = this.getIntersection(coord1).getColor();
 
-            this.getIntersection(coord2).addPiece(new Lyngk.Piece(colorPieceTemp));
-            this.getIntersection(coord1).removeLastPiece();
+            var piecesColorTemp = [];
+            var hauteur = this.getIntersection(coord1).getHauteur();
+
+            for(var i = 0; i < hauteur; i++){
+                piecesColorTemp.push(this.getIntersection(coord1).getColor());
+                console.log(piecesColorTemp[i]);
+                this.getIntersection(coord1).removeLastPiece();
+            }
+
+            piecesColorTemp.reverse();
+
+            for(var i =0; i<piecesColorTemp.length; i++){
+                console.log(piecesColorTemp[i]);
+                this.getIntersection(coord2).addPiece(new Lyngk.Piece(piecesColorTemp[i]));
+            }
+
+            // this.getIntersection(coord2).addPiece(new Lyngk.Piece(colorPiecesTemp));
+            // this.getIntersection(coord1).removeLastPiece();
         }
     }
 };
