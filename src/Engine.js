@@ -71,25 +71,21 @@ Lyngk.Engine = function () {
 
     this.movePiece = function (coord1, coord2) {
         if (this.getIntersection(coord1).getCoord().is_valid() && this.getIntersection(coord2).getCoord().is_valid()){
+            if(this.getIntersection(coord2).getState() !== Lyngk.State.VACANT){
+                var piecesColorTemp = [];
+                var hauteur = this.getIntersection(coord1).getHauteur();
 
-            var piecesColorTemp = [];
-            var hauteur = this.getIntersection(coord1).getHauteur();
+                for(var i = 0; i < hauteur; i++){
+                    piecesColorTemp.push(this.getIntersection(coord1).getColor());
+                    this.getIntersection(coord1).removeLastPiece();
+                }
 
-            for(var i = 0; i < hauteur; i++){
-                piecesColorTemp.push(this.getIntersection(coord1).getColor());
-                console.log(piecesColorTemp[i]);
-                this.getIntersection(coord1).removeLastPiece();
+                piecesColorTemp.reverse();
+
+                for(var i =0; i<piecesColorTemp.length; i++){
+                    this.getIntersection(coord2).addPiece(new Lyngk.Piece(piecesColorTemp[i]));
+                }
             }
-
-            piecesColorTemp.reverse();
-
-            for(var i =0; i<piecesColorTemp.length; i++){
-                console.log(piecesColorTemp[i]);
-                this.getIntersection(coord2).addPiece(new Lyngk.Piece(piecesColorTemp[i]));
-            }
-
-            // this.getIntersection(coord2).addPiece(new Lyngk.Piece(colorPiecesTemp));
-            // this.getIntersection(coord1).removeLastPiece();
         }
     }
 };

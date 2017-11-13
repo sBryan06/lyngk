@@ -216,6 +216,4 @@ LyngkTestCase.prototype.testStory17 = function () {
     assertEquals(engine.getIntersection('B3').getHauteur(), 2);
 
     engine.movePiece('B3', 'A3');
-
-
 };
