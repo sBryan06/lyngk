@@ -202,3 +202,20 @@ LyngkTestCase.prototype.testStory16 = function () {
     assertEquals(engine.getIntersection('B2').getHauteur(), 3);
 
 };
+
+LyngkTestCase.prototype.testStory17 = function () {
+    var engine = new Lyngk.Engine();
+    engine.init();
+    var tab = engine.getPlateau();
+
+    engine.movePiece('A3', 'B3');
+    engine.movePiece('B3', 'A3');
+
+    assertEquals(engine.getIntersection('A3').getState(), Lyngk.State.VACANT);
+    assertEquals(engine.getIntersection('A3').getColor(), null);
+    assertEquals(engine.getIntersection('B3').getHauteur(), 2);
+
+    engine.movePiece('B3', 'A3');
+
+
+};
