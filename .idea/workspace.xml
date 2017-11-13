@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f506860d-029c-4c7b-b0ed-d6abeea88d1b" name="Default" comment="impl test 11">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Engine.js" afterPath="$PROJECT_DIR$/src/Engine.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test.js" afterPath="$PROJECT_DIR$/test/test.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -73,8 +72,8 @@
       <file leaf-file-name="test.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="217" column="33" lean-forward="false" selection-start-line="217" selection-start-column="33" selection-end-line="217" selection-end-column="33" />
+            <state relative-caret-position="433">
+              <caret line="232" column="67" lean-forward="true" selection-start-line="232" selection-start-column="67" selection-end-line="232" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -272,17 +271,11 @@
       <workItem from="1508274052313" duration="1233000" />
       <workItem from="1508330371746" duration="2949000" />
       <workItem from="1508483005851" duration="9862000" />
-      <workItem from="1510575008697" duration="7041000" />
+      <workItem from="1510575008697" duration="9422000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="test - 2017.11.13 at 14h 32m 29s.xml">
-      <configuration name="test" configurationId="JsTestDriver-test-runner" />
-    </history-entry>
-    <history-entry file="test - 2017.11.13 at 14h 32m 35s.xml">
-      <configuration name="test" configurationId="JsTestDriver-test-runner" />
-    </history-entry>
     <history-entry file="test - 2017.11.13 at 14h 36m 19s.xml">
       <configuration name="test" configurationId="JsTestDriver-test-runner" />
     </history-entry>
@@ -307,9 +300,15 @@
     <history-entry file="test - 2017.11.13 at 15h 09m 33s.xml">
       <configuration name="test" configurationId="JsTestDriver-test-runner" />
     </history-entry>
+    <history-entry file="test - 2017.11.13 at 15h 12m 12s.xml">
+      <configuration name="test" configurationId="JsTestDriver-test-runner" />
+    </history-entry>
+    <history-entry file="test - 2017.11.13 at 15h 12m 36s.xml">
+      <configuration name="test" configurationId="JsTestDriver-test-runner" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54686000" />
+    <option name="totallyTimeSpent" value="57067000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -321,7 +320,7 @@
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31709957" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -506,8 +505,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="217" column="33" lean-forward="false" selection-start-line="217" selection-start-column="33" selection-end-line="217" selection-end-column="33" />
+        <state relative-caret-position="433">
+          <caret line="232" column="67" lean-forward="true" selection-start-line="232" selection-start-column="67" selection-end-line="232" selection-end-column="67" />
           <folding />
         </state>
       </provider>

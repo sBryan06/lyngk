@@ -208,12 +208,29 @@ LyngkTestCase.prototype.testStory17 = function () {
     engine.init();
     var tab = engine.getPlateau();
 
-    engine.movePiece('A3', 'B3');
-    engine.movePiece('B3', 'A3');
+    engine.movePiece('B2', 'B3');
+    engine.movePiece('B3', 'B2');
 
-    assertEquals(engine.getIntersection('A3').getState(), Lyngk.State.VACANT);
-    assertEquals(engine.getIntersection('A3').getColor(), null);
+    assertEquals(engine.getIntersection('B2').getState(), Lyngk.State.VACANT);
+    assertEquals(engine.getIntersection('B2').getColor(), null);
     assertEquals(engine.getIntersection('B3').getHauteur(), 2);
+
+    engine.movePiece('B3', 'A3');
+};
+
+LyngkTestCase.prototype.testStory18 = function () {
+    var engine = new Lyngk.Engine();
+    engine.init();
+    var tab = engine.getPlateau();
+
+    var hauteurC2 = engine.getIntersection('C2').getHauteur();
+    var colorC2 = engin.getIntersection('C2').getColor();
+
+    engine.movePiece('B2', 'B3');
+    engine.movePiece('B3', 'C2');
+
+    assertEquals(engine.getIntersection('C2').getHauteur(), hauteurC2);
+    assertEquals(engine.getIntersection('C2').getColor(), colorC2);
 
     engine.movePiece('B3', 'A3');
 };
