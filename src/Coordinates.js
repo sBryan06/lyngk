@@ -45,5 +45,5 @@ Lyngk.Coordinates = function (c, l) {
     this.hash = function () {
         var res = c.charCodeAt(0).toString() + l;
         return (parseInt(res) - 652);
-    }
+    };
 };

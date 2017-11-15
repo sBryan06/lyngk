@@ -5,6 +5,8 @@ Lyngk.Color = {BLACK: 0, IVORY: 1, BLUE: 2, RED: 3, GREEN: 4, WHITE: 5};
 
 Lyngk.Engine = function () {
     var plateau = [];
+    var colones = ['A','B','C','D','E','F','G','H','I'];
+    var lignes = [1,2,3,4,5,6,7,8,9];
 
     this.getPlateau = function () {
         return plateau;
@@ -26,29 +28,23 @@ Lyngk.Engine = function () {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    this.init = function () {
-        var colones = ['A','B','C','D','E','F','G','H','I'];
-        var lignes = [1,2,3,4,5,6,7,8,9];
-
+    this.createTabPieces = function () {
         var tabPieces = [];
-        var pieceBleu = new Lyngk.Piece(Lyngk.Color.BLUE);
-        var pieceRed = new Lyngk.Piece(Lyngk.Color.RED);
-        var pieceBlack = new Lyngk.Piece(Lyngk.Color.BLACK);
-        var pieceIvory = new Lyngk.Piece(Lyngk.Color.IVORY);
-        var pieceGreen = new Lyngk.Piece(Lyngk.Color.GREEN);
-        var pieceWhite = new Lyngk.Piece(Lyngk.Color.WHITE);
-
         for(var a=0; a<8; a++){
-            tabPieces.push(pieceBleu);
-            tabPieces.push(pieceRed);
-            tabPieces.push(pieceBlack);
-            tabPieces.push(pieceIvory);
-            tabPieces.push(pieceGreen);
+            tabPieces.push(new Lyngk.Piece(Lyngk.Color.BLUE));
+            tabPieces.push(new Lyngk.Piece(Lyngk.Color.RED));
+            tabPieces.push(new Lyngk.Piece(Lyngk.Color.BLACK));
+            tabPieces.push(new Lyngk.Piece(Lyngk.Color.IVORY));
+            tabPieces.push(new Lyngk.Piece(Lyngk.Color.GREEN));
         }
         for(var b=0; b<3; b++){
-            tabPieces.push(pieceWhite);
+            tabPieces.push(new Lyngk.Piece(Lyngk.Color.WHITE));
         }
+        return tabPieces;
+    };
 
+    this.init = function () {
+        var tabPieces = this.createTabPieces();
         var indiceAlea = 0;
         var pieceTemp;
 
@@ -70,22 +66,81 @@ Lyngk.Engine = function () {
     };
 
     this.movePiece = function (coord1, coord2) {
-        if (this.getIntersection(coord1).getCoord().is_valid() && this.getIntersection(coord2).getCoord().is_valid()){
-            if(this.getIntersection(coord2).getState() !== Lyngk.State.VACANT){
-                var piecesColorTemp = [];
-                var hauteur = this.getIntersection(coord1).getHauteur();
-
-                for(var i = 0; i < hauteur; i++){
-                    piecesColorTemp.push(this.getIntersection(coord1).getColor());
-                    this.getIntersection(coord1).removeLastPiece();
-                }
-
-                piecesColorTemp.reverse();
-
-                for(var i =0; i<piecesColorTemp.length; i++){
-                    this.getIntersection(coord2).addPiece(new Lyngk.Piece(piecesColorTemp[i]));
-                }
-            }
+        if ( !this.checkCoords(coord1, coord2)){
+            return;
         }
-    }
+        if( !this.move_is_valid(coord1, coord2)){
+            return;
+        }
+
+        var piecesColorTemp = [];
+        var hauteur = this.getIntersection(coord1).getHauteur();
+
+        for(var i = 0; i < hauteur; i++){
+            piecesColorTemp.push(this.getIntersection(coord1).getColor());
+            this.getIntersection(coord1).removeLastPiece();
+        }
+
+        piecesColorTemp.reverse();
+
+        for(var i =0; i<piecesColorTemp.length; i++){
+            this.getIntersection(coord2).addPiece(new Lyngk.Piece(piecesColorTemp[i]));
+        }
+    };
+
+    this.checkCoords = function (c1, c2) {
+        if (!this.coord_of_intersection_is_valid(c1)) {
+            return false;
+        } else if (!this.coord_of_intersection_is_valid(c2)) {
+            return false;
+        } else if (this.intersection_is_empty(c2)) {
+            return false;
+        }
+        return true;
+    };
+
+    this.coord_of_intersection_is_valid = function (coord) {
+        return (this.getIntersection(coord).getCoord().is_valid());
+    };
+
+    this.intersection_is_empty = function (coord) {
+        return (this.getIntersection(coord).getState() === Lyngk.State.VACANT);
+    };
+
+    this.move_is_valid = function (coord1, coord2) {
+        var c1 = new Lyngk.Coordinates(coord1.charAt(0), coord1.charAt(1));
+        var c2 = new Lyngk.Coordinates(coord2.charAt(0), coord2.charAt(1));
+
+        if (this.onSameLigne(c1,c2) || this.onSameColonne(c1,c2) || this.onSameDiagonal(c1,c2)) {
+            return true;
+        }
+        return false;
+    };
+
+    this.onSameLigne = function (coord1, coord2) {
+        return (coord1.getLigne() === coord2.getLigne());
+    };
+
+    this.onSameColonne = function (coord1, coord2) {
+        return (coord1.getColonne() === coord2.getColonne());
+    };
+    
+    this.onSameDiagonal = function (coord1, coord2) {
+        var diffColonne;
+        var diffLigne;
+        var ligneCoord1 = parseInt(coord1.getLigne());
+        var colonneCoord1 = coord1.getColonne();
+        var ligneCoord2 = parseInt(coord2.getLigne());
+        var colonneCoord2 = coord2.getColonne();
+
+        if (colonneCoord1 > colonneCoord2){
+            diffColonne = colonneCoord1 - colonneCoord2;
+            diffLigne =  ligneCoord1 - ligneCoord2;
+        } else {
+            diffColonne = colonneCoord2 - colonneCoord1;
+            diffLigne =  ligneCoord2 - ligneCoord1;
+        }
+        var res = Math.abs(diffColonne - diffLigne);
+        return (res === 0);
+    };
 };
