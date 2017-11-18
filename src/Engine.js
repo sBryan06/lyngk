@@ -117,21 +117,40 @@ Lyngk.Engine = function () {
         return false;
     };
 
-    this.onSameLigne = function (coord1, coord2) {
-        return (coord1.getLigne() === coord2.getLigne());
+    this.onSameColonne = function (coord1, coord2) {
+        // return (coord1.getColonne() === coord2.getColonne());
+        var ok = false;
+        var test;
+        if (coord1.getColonne() === coord2.getColonne()){
+            test = parseInt(coord1.getLigne()) - parseInt(coord2.getLigne());
+            if(test == 1 || test == -1){
+                ok = true;
+            }
+        }
+        return ok;
     };
 
-    this.onSameColonne = function (coord1, coord2) {
-        return (coord1.getColonne() === coord2.getColonne());
+    this.onSameLigne = function (coord1, coord2) {
+        // return (coord1.getLigne() === coord2.getLigne());
+        var ok = false;
+        var test;
+        if (coord1.getLigne() === coord2.getLigne()){
+            test = (coord1.getColonne().charCodeAt(0)) - (coord2.getColonne().charCodeAt(0));
+            if (test == 1 || test == -1){
+                ok = true;
+            }
+        }
+        return ok;
     };
-    
+
     this.onSameDiagonal = function (coord1, coord2) {
-        var diffColonne;
-        var diffLigne;
+        var ok = false;
+        var test;
+        var diffColonne, diffLigne;
         var ligneCoord1 = parseInt(coord1.getLigne());
-        var colonneCoord1 = coord1.getColonne();
+        var colonneCoord1 = coord1.getColonne().charCodeAt(0);
         var ligneCoord2 = parseInt(coord2.getLigne());
-        var colonneCoord2 = coord2.getColonne();
+        var colonneCoord2 = coord2.getColonne().charCodeAt(0);
 
         if (colonneCoord1 > colonneCoord2){
             diffColonne = colonneCoord1 - colonneCoord2;
@@ -141,6 +160,14 @@ Lyngk.Engine = function () {
             diffLigne =  ligneCoord2 - ligneCoord1;
         }
         var res = Math.abs(diffColonne - diffLigne);
-        return (res === 0);
+        //return (res === 0);
+
+        if (res === 0) {
+            test = ligneCoord1 - ligneCoord2;
+            if (test == 1 || test == -1){
+                ok = true;
+            }
+        }
+        return ok;
     };
 };
