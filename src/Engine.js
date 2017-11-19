@@ -108,10 +108,15 @@ Lyngk.Engine = function () {
         var newHauteur = parseInt(hauteurC1) + parseInt(hauteurC2);
 
         if (newHauteur > 5){
-            // vrai si la future intersection a 5 pieces au plus
+            // faux si la future intersection a plus de 5 pieces
             return false;
         }
-        if (hauteurC1 === 1 && hauteurC2 > 1){
+        // if (hauteurC1 === 1 && hauteurC2 > 1){
+        //     // faux si une piece seul est déplacé sur une pile
+        //     return false;
+        // }
+        if (hauteurC1 < hauteurC2){
+            // faux si pile déplacé sur une plus grande
             return false;
         }
         return true;
