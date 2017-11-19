@@ -1,0 +1,8 @@
+{
+  "maxparams": 4,
+  "maxstatements": 10,
+  "maxcomplexity": 3,
+  "maxlen": 80,
+  "-W097": false,
+  "-W117": false
+}
