@@ -72,6 +72,9 @@ Lyngk.Engine = function () {
         if( !this.move_is_valid(coord1, coord2)){
             return;
         }
+        if (!this.checkHeightBeforeMove(coord1, coord2)){
+            return;
+        }
 
         var piecesColorTemp = [];
         var hauteur = this.getIntersection(coord1).getHauteur();
@@ -97,6 +100,14 @@ Lyngk.Engine = function () {
             return false;
         }
         return true;
+    };
+
+    this.checkHeightBeforeMove = function (coord1, coord2){
+        // retourne vrai si la future intersection a 5 pieces au plus
+        var hauteurC1 = this.getIntersection(coord1).getHauteur();
+        var hauteurC2 = this.getIntersection(coord2).getHauteur();
+        var newHauteur = parseInt(hauteurC1) + parseInt(hauteurC2);
+        return (newHauteur <= 5);
     };
 
     this.coord_of_intersection_is_valid = function (coord) {

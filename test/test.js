@@ -255,7 +255,7 @@ LyngkTestCase.prototype.testStory19 = function() {
     assertTrue(engine.getIntersection('H5').getState() === stateH5);
 };
 
-LyngkTestCase.prototype.testStory19 = function() {
+LyngkTestCase.prototype.testStory20 = function() {
     var engine = new Lyngk.Engine();
     engine.init();
 
