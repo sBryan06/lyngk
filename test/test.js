@@ -278,3 +278,19 @@ LyngkTestCase.prototype.testStory20 = function() {
     assertEquals(engine.getIntersection('D2').getHauteur(), 5);
     assertEquals(engine.getIntersection('E2').getHauteur(), hauteurE2);
 };
+
+LyngkTestCase.prototype.testStory21 = function() {
+    var engine = new Lyngk.Engine();
+    engine.init();
+
+    var tab = engine.getPlateau();
+
+    engine.movePiece('A3', 'B3');
+
+    assertEquals(engine.getIntersection('B3').getHauteur(), 2);
+
+    engine.movePiece('C3','B3');
+
+    assertEquals(engine.getIntersection('B3').getHauteur(), 2);
+};
+
