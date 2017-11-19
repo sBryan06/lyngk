@@ -103,11 +103,18 @@ Lyngk.Engine = function () {
     };
 
     this.checkHeightBeforeMove = function (coord1, coord2){
-        // retourne vrai si la future intersection a 5 pieces au plus
         var hauteurC1 = this.getIntersection(coord1).getHauteur();
         var hauteurC2 = this.getIntersection(coord2).getHauteur();
         var newHauteur = parseInt(hauteurC1) + parseInt(hauteurC2);
-        return (newHauteur <= 5);
+
+        if (newHauteur > 5){
+            // vrai si la future intersection a 5 pieces au plus
+            return false;
+        }
+        if (hauteurC1 === 1 && hauteurC2 > 1){
+            return false;
+        }
+        return true;
     };
 
     this.coord_of_intersection_is_valid = function (coord) {
