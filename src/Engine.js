@@ -8,6 +8,7 @@ Lyngk.Engine = function () {
     var colones = ['A','B','C','D','E','F','G','H','I'];
     var lignes = [1,2,3,4,5,6,7,8,9];
     var player = 1;
+    var colorByPlayer = [];
 
     this.getPlateau = function () {
         return plateau;
@@ -80,6 +81,10 @@ Lyngk.Engine = function () {
                 }
             }
         }
+
+        for (var a =0; a < 6;a++)   {
+            colorByPlayer[a]=0;
+        }
     };
 
     this.movePiece = function (coord1, coord2) {
@@ -110,6 +115,13 @@ Lyngk.Engine = function () {
             var piece = new Lyngk.Piece(piecesColorTemp[j]);
             this.getIntersection(coord2).addPiece(piece);
         }
+    };
+
+    this.claimColor = function (color) {
+        if (colorByPlayer[color] !== 0)
+            return false;
+        colorByPlayer[color] = player;
+        return true;
     };
 
     this.checkCoords = function (c1, c2) {
