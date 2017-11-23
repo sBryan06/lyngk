@@ -85,17 +85,13 @@ Lyngk.Engine = function () {
     this.movePiece = function (coord1, coord2) {
         if ( !this.checkCoords(coord1, coord2)) return;
         if ( !this.move_is_valid(coord1, coord2)) return;
-        if (!this.checkHeightBeforeMove(coord1, coord2)){
-            return;
-        }
+        if (!this.checkHeightBeforeMove(coord1, coord2)) return;
         // if ( !this.checkColors(coord1, coord2)){
         //     console.log('error color');
         //     return;
         // }
         // false les tests précédents
-
         this.copyPile(coord1, coord2);
-
         this.nextPlayer();
     };
 
@@ -119,9 +115,11 @@ Lyngk.Engine = function () {
     this.checkCoords = function (c1, c2) {
         if (!this.coord_of_intersection_is_valid(c1)) {
             return false;
-        } else if (!this.coord_of_intersection_is_valid(c2)) {
+        }
+        if (!this.coord_of_intersection_is_valid(c2)) {
             return false;
-        } else if (this.intersection_is_empty(c2)) {
+        }
+        if (this.intersection_is_empty(c2)) {
             return false;
         }
         return true;
@@ -175,9 +173,9 @@ Lyngk.Engine = function () {
         var c1 = new Lyngk.Coordinates(coord1.charAt(0), coord1.charAt(1));
         var c2 = new Lyngk.Coordinates(coord2.charAt(0), coord2.charAt(1));
 
-        if (this.onSameLigne(c1,c2) || this.onSameColonne(c1,c2) || this.onSameDiagonal(c1,c2)) {
-            return true;
-        }
+        if (this.onSameLigne(c1,c2)) return true;
+        if (this.onSameDiagonal(c1,c2)) return true;
+        if (this.onSameColonne(c1,c2)) return true;
         return false;
     };
 

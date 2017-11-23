@@ -2,7 +2,7 @@
 
 Lyngk.State = {VACANT: 0, ONE_PIECE: 1, STACK: 2, FULL_STACK: 3};
 
-Lyngk.Intersection = function(coord) {
+Lyngk.Intersection = function (coord) {
     var state = Lyngk.State.VACANT;
     var pieces = [];
     var coordinates;
@@ -43,7 +43,7 @@ Lyngk.Intersection = function(coord) {
         }
     };
     this.setStateSTACK = function () {
-        if (pieces.length > 1 && pieces.length < 5){
+        if (pieces.length > 1 && pieces.length < 5) {
             state = Lyngk.State.STACK;
         }
     };
@@ -53,9 +53,9 @@ Lyngk.Intersection = function(coord) {
         }
     };
 
-    this.removeLastPiece = function(){
+    this.removeLastPiece = function () {
         pieces.pop();
-        if(pieces.length === 0){
+        if (pieces.length === 0) {
             state = Lyngk.State.VACANT;
         }
     };

@@ -23,9 +23,9 @@ Lyngk.Coordinates = function (c, l) {
             'E8', 'F8', 'G8', 'H8',
             'G9'
         ];
-        if(tabPossibles.indexOf(coord) === -1) {
+        if (tabPossibles.indexOf(coord) === -1) {
             return false;
-        }else{
+        } else {
             return true;
         }
     };
