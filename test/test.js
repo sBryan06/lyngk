@@ -342,3 +342,13 @@ LyngkTestCase.prototype.testStory25 = function() {
     assertEquals(engine.getPlayer(), 2);
 };
 
+LyngkTestCase.prototype.testStory26 = function() {
+    var engine = new Lyngk.Engine();
+    engine.init();
+
+    assertTrue(engine.claimColor(Lyngk.Color.RED));
+    engine.movePiece('A3', 'B3');
+    assertFalse(engine.claimColor(Lyngk.Color.RED));
+    assertTrue(engine.claimColor(Lyngk.Color.GREEN));
+};
+
