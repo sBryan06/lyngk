@@ -331,3 +331,14 @@ LyngkTestCase.prototype.testStory24 = function() {
     assertEquals(engine.getPlayer(), 1);
 };
 
+LyngkTestCase.prototype.testStory25 = function() {
+    var engine = new Lyngk.Engine();
+    engine.init();
+
+    assertEquals(engine.getPlayer(), 1);
+
+    engine.movePiece('A3', 'B3');
+
+    assertEquals(engine.getPlayer(), 2);
+};
+
