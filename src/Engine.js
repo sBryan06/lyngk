@@ -25,6 +25,14 @@ Lyngk.Engine = function () {
         return player;
     };
 
+    this.nextPlayer = function () {
+        if(player === 1){
+            player++;
+        } else {
+            player--;
+        }
+    };
+
     // On renvoie un nombre aléatoire entre une valeur min (incluse)
     // et une valeur max (exclue)
     function getRandomInt(min, max) {
@@ -48,35 +56,35 @@ Lyngk.Engine = function () {
         return tabPieces;
     };
 
+    this.createPiece = function (tabPieces, coord){
+        var indiceAlea;
+        var pieceTemp;
+        // creation de l'intersection
+        var intersection = new Lyngk.Intersection(coord);
+        indiceAlea = getRandomInt(0,tabPieces.length);
+        pieceTemp = tabPieces[indiceAlea];
+        tabPieces.splice(indiceAlea, 1);
+        // ajout de la piece a l'intersection
+        intersection.addPiece(pieceTemp);
+        plateau.push(intersection);
+    };
+
     this.init = function () {
         var tabPieces = this.createTabPieces();
-        var indiceAlea = 0;
-        var pieceTemp;
 
         for(var i in colones) {
             for(var j in lignes) {
                 var coordinates = new Lyngk.Coordinates(colones[i],lignes[j]);
-                if(coordinates.is_valid() == true){
-                    // creation de l'intersection
-                    var intersection = new Lyngk.Intersection(coordinates);
-                    indiceAlea = getRandomInt(0,tabPieces.length);
-                    pieceTemp = tabPieces[indiceAlea];
-                    tabPieces.splice(indiceAlea, 1);
-                    // ajout de la piece a l'intersection
-                    intersection.addPiece(pieceTemp);
-                    plateau.push(intersection);
+                if(coordinates.is_valid() === true){
+                    this.createPiece(tabPieces, coordinates);
                 }
             }
         }
     };
 
     this.movePiece = function (coord1, coord2) {
-        if ( !this.checkCoords(coord1, coord2)){
-            return;
-        }
-        if( !this.move_is_valid(coord1, coord2)){
-            return;
-        }
+        if ( !this.checkCoords(coord1, coord2)) return;
+        if ( !this.move_is_valid(coord1, coord2)) return;
         if (!this.checkHeightBeforeMove(coord1, coord2)){
             return;
         }
@@ -86,6 +94,12 @@ Lyngk.Engine = function () {
         // }
         // false les tests précédents
 
+        this.copyPile(coord1, coord2);
+
+        this.nextPlayer();
+    };
+
+    this.copyPile = function (coord1, coord2) {
         var piecesColorTemp = [];
         var hauteur = this.getIntersection(coord1).getHauteur();
 
@@ -96,8 +110,9 @@ Lyngk.Engine = function () {
 
         piecesColorTemp.reverse();
 
-        for(var i =0; i<piecesColorTemp.length; i++){
-            this.getIntersection(coord2).addPiece(new Lyngk.Piece(piecesColorTemp[i]));
+        for(var j =0; j<piecesColorTemp.length; j++){
+            var piece = new Lyngk.Piece(piecesColorTemp[j]);
+            this.getIntersection(coord2).addPiece(piece);
         }
     };
 
@@ -172,7 +187,7 @@ Lyngk.Engine = function () {
         var test;
         if (coord1.getColonne() === coord2.getColonne()){
             test = parseInt(coord1.getLigne()) - parseInt(coord2.getLigne());
-            if(test == 1 || test == -1){
+            if(test === 1 || test === -1){
                 ok = true;
             }
         }
@@ -184,8 +199,9 @@ Lyngk.Engine = function () {
         var ok = false;
         var test;
         if (coord1.getLigne() === coord2.getLigne()){
-            test = (coord1.getColonne().charCodeAt(0)) - (coord2.getColonne().charCodeAt(0));
-            if (test == 1 || test == -1){
+            test = (coord1.getColonne().charCodeAt(0));
+            test -= (coord2.getColonne().charCodeAt(0));
+            if (test === 1 || test === -1){
                 ok = true;
             }
         }
