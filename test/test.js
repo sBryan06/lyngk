@@ -301,27 +301,30 @@ LyngkTestCase.prototype.testStory22 = function() {
     assertEquals(engine.getIntersection('G6').getHauteur(), 3);
 };
 
-// LyngkTestCase.prototype.testStory23 = function(){
-//     var engine = new Lyngk.Engine();
-//     engine.init();
-//     var interC1 = engine.getIntersection('A3');
-//     var interC2 = engine.getIntersection('B3');
-//     var interC3 = engine.getIntersection('C3');
-//     var interC4 = engine.getIntersection('D3');
-//     var interC5 = engine.getIntersection('E3');
-//     console.log(interC1.getColor());
-//     console.log(interC2.getColor());
-//     console.log(interC3.getColor());
-//     console.log(interC4.getColor());
-//     console.log(interC5.getColor());
-//     engine.movePiece('A3', 'B3');
-//     engine.movePiece('B3', 'C3');
-//     engine.movePiece('C3', 'D3');
-//     engine.movePiece('D3', 'E3');
-//     assertEquals(interC5.getHauteur(), 5);
-// };
+LyngkTestCase.prototype.testStory23 = function(){
+   var engine = new Lyngk.Engine();
+   engine.init();
+   var interC1 = engine.getIntersection('A3');
+   var interC2 = engine.getIntersection('B3');
+   var interC3 = engine.getIntersection('C3');
+   var interC4 = engine.getIntersection('D3');
+   var interC5 = engine.getIntersection('E3');
+   console.log(interC1.getColor());
+   console.log(interC2.getColor());
+   console.log(interC3.getColor());
+   console.log(interC4.getColor());
+   console.log(interC5.getColor());
+   engine.movePiece('A3', 'B3');
+   engine.movePiece('B3', 'C3');
+   engine.movePiece('C3', 'D3');
+   engine.movePiece('D3', 'E3');
 
-LyngkTestCase.prototype.testStory23 = function() {
+   if( interC1.getColor() !== interC2.getColor() !== interC3.getColor() !== interC4.getColor() !== interC5.getColor()) {
+       assertEquals(interC5.getHauteur(), 5);
+   }
+};
+
+LyngkTestCase.prototype.testStory24 = function() {
     var engine = new Lyngk.Engine();
     engine.init();
 

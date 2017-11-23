@@ -7,6 +7,7 @@ Lyngk.Engine = function () {
     var plateau = [];
     var colones = ['A','B','C','D','E','F','G','H','I'];
     var lignes = [1,2,3,4,5,6,7,8,9];
+    var player = 1;
 
     this.getPlateau = function () {
         return plateau;
@@ -18,6 +19,10 @@ Lyngk.Engine = function () {
                 return plateau[p];
             }
         }
+    };
+
+    this.getPlayer = function () {
+        return player;
     };
 
     // On renvoie un nombre aléatoire entre une valeur min (incluse)
