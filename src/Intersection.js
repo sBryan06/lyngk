@@ -26,6 +26,10 @@ Lyngk.Intersection = function(coord) {
         return coordinates;
     };
 
+    this.getPieces = function () {
+        return pieces;
+    };
+
     this.addPiece = function (piece) {
         pieces.push(piece);
         this.setStateONEPIECE();

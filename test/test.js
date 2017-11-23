@@ -2,6 +2,9 @@
 
 var LyngkTestCase = TestCase("LyngkTestCase");
 
+//Math.seedrandom("testlyngk");
+// erreur: Math.seedrandom nest pas une fonction
+
 LyngkTestCase.prototype.testStory1 = function () {
     var coordinates = new Lyngk.Coordinates('A',1);
 
@@ -172,7 +175,6 @@ LyngkTestCase.prototype.testStory14 = function () {
 LyngkTestCase.prototype.testStory15 = function () {
     var engine = new Lyngk.Engine();
     engine.init();
-    var tab = engine.getPlateau();
 
     var colorBeforeA3 = engine.getIntersection('A3').getColor();
 
@@ -186,7 +188,6 @@ LyngkTestCase.prototype.testStory15 = function () {
 LyngkTestCase.prototype.testStory16 = function () {
     var engine = new Lyngk.Engine();
     engine.init();
-    var tab = engine.getPlateau();
 
     var colorAvantMovement = engine.getIntersection('A3').getColor();
 
@@ -199,13 +200,11 @@ LyngkTestCase.prototype.testStory16 = function () {
     assertEquals(engine.getIntersection('B3').getColor(), null);
     assertEquals(engine.getIntersection('B2').getColor(), colorAvantMovement);
     assertEquals(engine.getIntersection('B2').getHauteur(), 3);
-
 };
 
 LyngkTestCase.prototype.testStory17 = function () {
     var engine = new Lyngk.Engine();
     engine.init();
-    var tab = engine.getPlateau();
 
     engine.movePiece('B2', 'B3');
     engine.movePiece('B3', 'B2');
@@ -221,7 +220,6 @@ LyngkTestCase.prototype.testStory17 = function () {
 LyngkTestCase.prototype.testStory18 = function () {
     var engine = new Lyngk.Engine();
     engine.init();
-    var tab = engine.getPlateau();
 
     var hauteurC2 = engine.getIntersection('C2').getHauteur();
     var colorC2 = engine.getIntersection('C2').getColor();
@@ -238,8 +236,6 @@ LyngkTestCase.prototype.testStory18 = function () {
 LyngkTestCase.prototype.testStory19 = function() {
     var engine = new Lyngk.Engine();
     engine.init();
-
-    var tab = engine.getPlateau();
 
     engine.movePiece('I7','H6');
     engine.movePiece('H6','H5');
@@ -258,8 +254,6 @@ LyngkTestCase.prototype.testStory19 = function() {
 LyngkTestCase.prototype.testStory20 = function() {
     var engine = new Lyngk.Engine();
     engine.init();
-
-    var tab = engine.getPlateau();
 
     engine.movePiece('A3', 'B3');
     engine.movePiece('B3', 'B2');
@@ -282,8 +276,6 @@ LyngkTestCase.prototype.testStory20 = function() {
 LyngkTestCase.prototype.testStory21 = function() {
     var engine = new Lyngk.Engine();
     engine.init();
-
-    var tab = engine.getPlateau();
 
     engine.movePiece('A3', 'B3');
 
@@ -308,3 +300,31 @@ LyngkTestCase.prototype.testStory22 = function() {
     assertEquals(engine.getIntersection('H6').getHauteur(), 2);
     assertEquals(engine.getIntersection('G6').getHauteur(), 3);
 };
+
+// LyngkTestCase.prototype.testStory23 = function(){
+//     var engine = new Lyngk.Engine();
+//     engine.init();
+//     var interC1 = engine.getIntersection('A3');
+//     var interC2 = engine.getIntersection('B3');
+//     var interC3 = engine.getIntersection('C3');
+//     var interC4 = engine.getIntersection('D3');
+//     var interC5 = engine.getIntersection('E3');
+//     console.log(interC1.getColor());
+//     console.log(interC2.getColor());
+//     console.log(interC3.getColor());
+//     console.log(interC4.getColor());
+//     console.log(interC5.getColor());
+//     engine.movePiece('A3', 'B3');
+//     engine.movePiece('B3', 'C3');
+//     engine.movePiece('C3', 'D3');
+//     engine.movePiece('D3', 'E3');
+//     assertEquals(interC5.getHauteur(), 5);
+// };
+
+LyngkTestCase.prototype.testStory23 = function() {
+    var engine = new Lyngk.Engine();
+    engine.init();
+
+    assertEquals(engine.getPlayer(), 1);
+};
+

@@ -75,6 +75,11 @@ Lyngk.Engine = function () {
         if (!this.checkHeightBeforeMove(coord1, coord2)){
             return;
         }
+        // if ( !this.checkColors(coord1, coord2)){
+        //     console.log('error color');
+        //     return;
+        // }
+        // false les tests précédents
 
         var piecesColorTemp = [];
         var hauteur = this.getIntersection(coord1).getHauteur();
@@ -118,6 +123,22 @@ Lyngk.Engine = function () {
         if (hauteurC1 < hauteurC2){
             // faux si pile déplacé sur une plus grande
             return false;
+        }
+        return true;
+    };
+
+    this.checkColors = function (coord1, coord2) {
+        var piecesC1 = this.getIntersection(coord1).getPieces();
+        var piecesC2 = this.getIntersection(coord2).getPieces();
+
+        for(var i=0; i< piecesC1.length; i++){
+            for(var j=0; j< piecesC2.length; j++){
+                if (piecesC1[i].getColor() === piecesC2[j].getColor()) {
+                    if (piecesC1[i].getColor() !== Lyngk.Color.WHITE){
+                        return false;
+                    }
+                }
+            }
         }
         return true;
     };
